@@ -1,10 +1,16 @@
 # discord-bot
 
-A Discord bot designed to... well, that part is up to you.
-
+A discord bot written with Clojure
 ## Usage
 
-FIXME
+For now you just need to have clojure installed and leiningen and then `lein run`.
+
+Also, don't forget to create a file in the root folder `config.edn`
+
+``` clojure
+{:token "YOUR_DISCORD_BOT_TOKEN"}
+
+```
 
 ## License
 
