@@ -1,5 +1,7 @@
-(ns discord-bot.commands.help)
-
+(ns discord-bot.commands.help
+  (:require  [discljord.messaging   :as m]
+            ))
+(use '[discord-bot.state :as state])
 
 (defn help-message [channel-id]
   (format "Hello there, Human!
@@ -19,4 +21,12 @@
           -- Helpbot
           
           " channel-id))
+
+(defn handler
+  [event-type {{bot :bot} :author :keys [channel-id content ]}]
+  (if (= content "!ayuda")
+    (m/create-message! (:messaging @state/state) channel-id :content (help-message channel-id))
+    )
+  )
+
 
