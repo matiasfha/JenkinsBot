@@ -6,12 +6,14 @@
             [discljord.events :as e]
             ))
 (use '[discord-bot.commands.help :as help])
+(use '[discord-bot.commands.getonbrd :as getonbrd])
 (use '[discord-bot.state :as state])
+
 (def read-config (edn/read-string (slurp "config.edn")))
 
 (def token (:token read-config))
 
-(def handlers {:message-create [#'help/handler]})
+(def handlers {:message-create [#'help/handler #'getonbrd/getonbrd-handler ]})
 
 (defn -main [& args]                                                       
   (let [event-ch (a/chan 100)                                              
